@@ -105,3 +105,4 @@ venv.bak/
 
 local_settings.py
 .idea
+.static
