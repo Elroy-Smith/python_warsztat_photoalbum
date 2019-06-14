@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Poor Insta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
 
-{% block content %}
-{% for photo in photos %}
-    <img src="{{ photo.path }}"></img>
-{% endfor %}
+{% block header %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}" class="btn btn-danger">logout</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}" class="btn btn-success">login</a>
+{% endif %}
 {% endblock %}
+
+{% block content %}
+    <div>
+{% for photo in photos %}
+    <img src="{{ photo.path }}" class="img-fluid">
+{% endfor %}
+    </div>
+{% endblock %}
+
 </body>
 </html>
