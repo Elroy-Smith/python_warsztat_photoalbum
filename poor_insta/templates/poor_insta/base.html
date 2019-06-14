@@ -5,8 +5,11 @@
     <title>Poor Insta</title>
 </head>
 <body>
+
 {% block content %}
-no elo
+{% for photo in photos %}
+    <img src="{{ photo.path }}"></img>
+{% endfor %}
 {% endblock %}
 </body>
 </html>
